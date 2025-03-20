@@ -50,4 +50,48 @@ RSpec.describe Checkout do
       end
     end
   end
+
+  describe "#scan" do
+    context "when code is valid" do
+      it "successfully adds the code to the cart" do
+        co.scan("GR1")
+
+        expect(co.cart).to include("GR1")
+      end
+    end
+
+    context "when code is invalid" do
+      it "does not add the code to the cart" do
+        co.scan("RandomCode3")
+
+        expect(co.cart).to be_empty
+      end
+    end
+
+    context "when code is not a String" do
+      it "does not add the code to the cart" do
+        co.scan(3.13)
+
+        expect(co.cart).to be_empty
+      end
+    end
+  end
+
+  describe "#initialize" do
+    context "when class is instantiated correctly" do
+      it "contains the correct class variables" do
+        expect(co.pricing_rules).to be_a(PricingRules)
+        expect(co.cart).to be_a(Array)
+        expect(co.cart).to be_empty
+      end
+    end
+
+    context "when the class is not instantied with a PricingRules instance" do
+      it "raises an error" do
+        expect do
+          Checkout.new(Item)
+        end.to raise_error(Checkout::NoPricingRulesError, "You need to input a new PricingRules instance")
+      end
+    end
+  end
 end
