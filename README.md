@@ -16,7 +16,15 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 ## Usage
 
-TODO: Write usage instructions here
+### Console open
+    $ bin/console
+
+### Test functionality
+    $ pricing_rules = PricingRules.new
+    $ co = Checkout.new(pricing_rules)
+    $ co.scan("GR1")
+    $ co.scan("GR1")
+    $ price = co.total
 
 ## Development
 
