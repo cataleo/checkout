@@ -2,7 +2,7 @@
 
 require_relative "checkout/version"
 
-module Checkout
+class Checkout
   class Error < StandardError; end
   # Your code goes here...
 end
