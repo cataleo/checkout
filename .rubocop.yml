@@ -14,3 +14,6 @@ Layout/LineLength:
 
 Metrics/BlockLength:
   Max: 29
+
+Metrics/MethodLength:
+  Max: 12
