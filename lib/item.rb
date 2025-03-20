@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Item
   PRODUCT = Struct.new(:product_code, :name, :price)
 
